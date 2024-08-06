@@ -1,0 +1,58 @@
+{
+  "source_parameters": {
+      "host_type": "Source server",
+          "odbc_configuration": {
+            "ip": "localhost",
+            "db": "ppc",
+            "user_name": "sa",
+            "encrypted_password": "First#1234",
+            "port": 1433
+          }
+  },
+    "export_parameters": {
+      "hosts": [
+        {
+          "host_type": "Replica server",
+          "odbc_configuration": {
+            "ip": "10.1.22.99",
+            "db": "ppc",
+            "user_name": "sa",
+            "encrypted_password": "First#1234",
+            "port": 1433
+          },
+          "tables_to_export": ["lntds_analog_data"],
+          "ScheduleIntervalInSeconds": "60"
+        }
+      ]
+    },
+    "import_parameters": {
+      "hosts": [
+        {
+          "host_type": "Replica server",
+          "odbc_configuration": {
+            "ip": "192.168.1.200",
+            "dsn": "import_host1_dsn",
+            "user_name": "import_user1",
+            "encrypted_password": "encrypted_import_password1",
+            "driver": "ODBC Driver 17 for SQL Server",
+            "port": 1433
+          },
+          "tables_to_import": ["table1", "table2", "table3"],
+          "ScheduleIntervalInSeconds": "3600"
+        },
+        {
+          "host_type": "Replica server",
+          "odbc_configuration": {
+            "ip": "192.168.1.201",
+            "dsn": "import_host2_dsn",
+            "user_name": "import_user2",
+            "encrypted_password": "encrypted_import_password2",
+            "driver": "ODBC Driver 17 for SQL Server",
+            "port": 1433
+          },
+          "tables_to_import": ["table1", "table2", "table3"],
+          "ScheduleIntervalInSeconds": "3600"
+        }
+      ]
+    }
+  }
